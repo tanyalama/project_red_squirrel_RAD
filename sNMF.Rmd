@@ -1,0 +1,158 @@
+---
+title: "sNMF analysis on red squirrel SNP data"
+author: "Tanya Lama"
+date: "4/13/2018"
+output:
+  html_document: 
+    theme: cosmo
+  rmarkdown: github_document
+  
+---
+```{r setup, echo = TRUE, include=TRUE, results = 'hide', message= FALSE, warning = FALSE}
+library(vcfR)
+library(adegenet)
+library(adegraphics)
+library(pegas)
+library(StAMPP)
+library(lattice)
+library(gplots)
+library(ape)
+library(ggmap) 
+require(LEA)
+```
+
+```{r echo = T, include = T}
+
+vcf<- read.vcfR("/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.vcf", verbose = FALSE)
+head(vcf)
+
+#Then plot important statistics summed over entire VCF
+#chrom <- create.chromR(name='RAD_data', vcf=vcf) 
+#plot(chrom) #plot the data
+
+#Then extract the allele depths per each sample (DP field of VCF) and plot distribution of allele depths of all sites per each sample. NB: You may inspect and visualize other fields of VCF, e.g. allele depth (AD) or genotype quality (GQ)
+# read depth distribution per individual 
+dp<- extract.gt(vcf, element = 'DP', as.numeric=TRUE)
+#pdf("DP_RAD_data.pdf", width = 10, height=3) # boxplot #where did this go?
+#par(mar=c(8,4,1,1)) 
+
+#Plot Read Depth (DP) per individual 
+boxplot(dp, las=3, col=c("#C0C0C0", "#808080"), ylab="Read Depth (DP)",las=2, cex=0.4, cex.axis=0.5)
+#zoom to smaller values 
+boxplot(dp, las=3, col=c("#C0C0C0", "#808080"), ylab="Read Depth (DP)",
+las=2, cex=0.4, cex.axis=0.5, ylim=c(0,50))
+abline(h=8, col="red") 
+```
+
+sNMF: a program to estimate ancestry coefficients
+```{r echo=T, include = T}
+#sNMF is a fast and efficient method for estimating individual ancestry coefficients based on sparse non-negative matrix factorization algorithms. In [1], the performances of sNMF were compared to the likelihood algorithm implemented in the computer program ADMIXTURE. Without loss of accuracy, sNMF computed estimates of ancestry coefficients with run-times approximately 10 to 30 times shorter than those of ADMIXTURE.
+
+#Install all the necessary packages below:
+  #install.packages(c("fields","RColorBrewer","mapplots"))
+  #source("http://bioconductor.org/biocLite.R")
+  #biocLite("LEA")
+  #require(LEA)
+
+#Commands to load functions and import files in STRUCTURE format
+  #source("http://membres-timc.imag.fr/Olivier.Francois/Conversion.R")
+  #source("http://membres-timc.imag.fr/Olivier.Francois/POPSutilities.R")
+
+#Importing input files
+#Our files need to be convertable to .geno or .lmff format used by LEA. The LEA package has a couple of very helpful functions to convert vcf files to these formats in R. If you can't use these functions, you may need to convert your vcf to STRUCTURE format outside of R using PGDSpider (downloaded at ). 
+
+#We found that using the vcf2geno or vcf2lmff functions were much easier than converting our vcf dataset to STRUCTURE format and then using the struct2geno function.1371 line(s) were removed because these are not SNPs.
+#identify your input file
+input.file <- "/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.vcf"
+
+#vcf2geno function. The output.file should be same as the input file ending in .geno. force = TRUE if you want to overwrite an existing file under that name. 
+vcf2geno(input.file, output.file = "/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.geno", force = TRUE)
+
+#vcf2lfmm(input.file, output.file = "/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.lfmm", force = TRUE)
+```
+
+Now that we have the correct input file formats, we can run a population structure analysis that assumes K = ? clusters. This can be done by using the snmf function of the LEA package. The input.file here should end in .geno
+```{r echo=T, results = 'hide'}
+#Trying K clusters 1-10, and running 10 iterations per K
+obj.snmf = snmf("/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.geno", K = 1:10, project = "new", repetitions = 1, tolerance = 0.00001, entropy=TRUE, ploidy = 2)
+```
+
+Examine the results
+```{r echo= T, include = T}
+# plot cross-entropy criterion of all runs of the project
+#This plot helps us identify the number of clusters to identify as the most likely for our population (looks like k=3)
+plot(obj.snmf, cex = 1.2, col = "lightblue", pch = 19)
+
+# get the cross-entropy value for each run at K = ?
+ce <- cross.entropy(obj.snmf, K = 3) #we only did 1 run. More realistically we would perform many runs and select the best one
+
+# select the run with the lowest cross-entropy value for K = ?
+best <- which.min(ce) # the best run is #1 at k=3
+
+#At the end of the run, the qmatrix object contains the matrix of ancestry coefficients for each individual and for K = 3 clusters. The Q-matrix has 24 rows and 3 columns, and it is traditionally displayed using a barplot representation. For this representation, we just use the barplot function of R (Figure 1).
+qmatrix = Q(obj.snmf, K = 3, run = best)
+qmatrix
+
+# Name the cluster assignment for each individual
+cluster<- apply(qmatrix, 1, which.max) #this corresponds with the 1:24 order 
+# [1] 1 1 1 1 1 1 1 1 1 2 1 1 1 3 1 1 1 3 1 1 2 1 
+# e.g. Individual #1 (UMA2) was assigned to cluster 1
+```
+
+```{r echo=F, results = 'hide', include = F}
+#Ancestry proportions
+barchart(obj.snmf, K = 3, run = best,  border = NA, space = .2, col = c("orange","violet","lightgreen"), xlab = "Individuals", ylab = "Ancestry proportions",  main = "Ancestry matrix", horiz = FALSE,   names.arg = c("1_UMA2","2_UMA35","3_RS32","4_UMA20","5_UMA39","6_UMA19","7_RS104","8_UMA13","9_UMA5", "10_UMA3", "11_UMA26", "12_RS33","13_UMA23", "14_UMA40", "15_UMA8", "16_UMA6", "17_UMA9", "18_UMA38", "19_UMA17", "20_UMA41", "21_UMA4", "22_UMA37", "23_UMA21", "24_UMA42"),cex.names=0.65, las = 2) -> bp 
+
+#Make sure ancestry proportions for each individual are labeled correctly
+ids<- bp$order
+#[1] 14 18 10 21 23  1  2  3  4  5  6  7  8  9 11 12 13 15 16 17 19 20 22 24
+```
+
+Ancestry proportions
+```{r echo = F, include = FALSE}
+#barchart(obj.snmf, K = 3, run = best,  border = NA, space = .2, col = c("orange","violet","lightgreen"), xlab = "Individuals", ylab = "Ancestry proportions",  main = "Ancestry matrix", horiz = FALSE,   names.arg = ids,cex.names=0.65, las = 2) -> bp 
+
+# Input order 1:24 in .geno file
+#samples<- matrix (c("1_UMA2","2_UMA35","3_RS32","4_UMA20","5_UMA39","6_UMA19","7_RS104","8_UMA13","9_UMA5", "10_UMA3", "11_UMA26", "12_RS33","13_UMA23", "14_UMA40", "15_UMA8", "16_UMA6", "17_UMA9", "18_UMA38", "19_UMA17", "20_UMA41", "21_UMA4", "22_UMA37", "23_UMA21", "24_UMA42"),ncol= 1)
+```
+
+Estimating Individual Admixture Proportions from NGS data
+```{r echo=T, include = T}
+barplot(t(qmatrix),col=c("orange","violet","lightgreen"),border = NA, space = .2,xlab = "Individuals", ylab = "Admixture coefficients", main = "Ancestry matrix", horiz = FALSE, names.arg = c("UMA2","UMA35","RS32","UMA20","UMA39","UMA19","RS104","UMA13","UMA5", "UMA3", "UMA26", "RS33","UMA23", "UMA40", "UMA8", "UMA6", "UMA9", "UMA38", "UMA17", "UMA41", "UMA4", "UMA37", "UMA21", "UMA42"),cex.names=0.65, las = 2)
+#legend v1, n= 19;  v2, n= 3;  v3, n=2
+```
+Other post-run sNMF treatments
+Call the ancestral genotype frequency matrix, G, for the best run of k=3. 
+```{r echo=T, include =T}
+gmatrix = G(obj.snmf, K = 3, run = best)
+head(gmatrix)
+barplot(gmatrix,  border = NA, space = 0.2,  col = c("orange","violet","lightgreen"),  xlab = "Populations", ylab = "Ancestry proportions",  main = "Ancestry matrix") ->gp
+```
+
+Review sNMF run results
+```{r echo = T, results = 'hide'}
+show(obj.snmf)
+##file directory:                   K3/run1/ 
+## Q output file:                    UMA13_aligned_genotypes_stringent_r1.3.Q 
+## G output file:                    UMA13_aligned_genotypes_stringent_r1.3.G 
+## snmfClass file:                   UMA13_aligned_genotypes_stringent_r1.3.snmfClass 
+## number of ancestral populations:  3 
+## run number:                       1 
+## regularization parameter:         10 
+## number of CPUs:                   1 
+## seed:                             733639482 
+## maximal number of iterations:     200 
+## tolerance error:                  1e-05 
+## Q input file:                      
+## cross-Entropy:                    0.5789651 
+```
+
+Summary of the project
+```{r echo = T, include = T}
+summary(obj.snmf)
+```
+
+Next: K-means clustering and discriminant analysis of principal components (DAPC) 
+```{r}
+#K‐means clustering is a fast method how to assign individuals into groups. Unlike STRUCTURE it does not make assumptions on population genetic parameters such as Hardy Weinberg equilibrium....
+```
