@@ -1,2 +1,2 @@
-# sNMF
+# RedSquirrel 
 sNMF on red squirrel SNP data
