@@ -155,4 +155,4 @@ summary(obj.snmf)
 Next: K-means clustering and discriminant analysis of principal components (DAPC) 
 ```{r}
 #K‐means clustering is a fast method how to assign individuals into groups. Unlike STRUCTURE it does not make assumptions on population genetic parameters such as Hardy Weinberg equilibrium....
-```
+``` 
