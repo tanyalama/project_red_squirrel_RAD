@@ -1,0 +1,25 @@
+Correct cksums from Novogene: 
+# Undetermined
+8285630061      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_1.fq.gz
+9136401141      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_2.fq.gz
+8068088202      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_1.fq.gz
+8907563399      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_2.fq.gz
+# SV1
+34275308803     ./Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_2.fq.gz
+34013595369     ./Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_2.fq.gz
+31099364277     ./Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_1.fq.gz
+31316620338     ./Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_1.fq.gz
+185370  ./Rawdata/Rawdata_Readme.pdf
+272     ./Rawdata/Undetermined/MD5.txt
+
+
+cksums from /project/uma_lisa_komoroske/Tanya/download/redsquirrel/
+# Undetermined
+
+# SV1
+ yes 31316620338 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_1.fq.gz
+ yes 34275308803 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_2.fq.gz
+ yes 31099364277 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_1.fq.gz
+ yes 34013595369 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_2.fq.gz
+
+cksums from 
