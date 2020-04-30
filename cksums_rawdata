@@ -1,4 +1,4 @@
-Correct cksums from Novogene: 
+##### correct cksums from Novogene: 
 # Undetermined
 8285630061      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_1.fq.gz
 9136401141      ./Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_2.fq.gz
@@ -13,13 +13,30 @@ Correct cksums from Novogene:
 272     ./Rawdata/Undetermined/MD5.txt
 
 
-cksums from /project/uma_lisa_komoroske/Tanya/download/redsquirrel/
-# Undetermined
+##### cksums from /project/uma_lisa_komoroske/Tanya/download/redsquirrel/
+# Undetermined (can delete, backed up to /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/)
+yes 272 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/MD5.txt
+yes 8285630061 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_1.fq.gz
+yes 9136401141 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_2.fq.gz
+yes 8068088202 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_1.fq.gz
+yes 8907563399 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_2.fq.gz
 
 # SV1
- yes 31316620338 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_1.fq.gz
- yes 34275308803 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_2.fq.gz
- yes 31099364277 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_1.fq.gz
- yes 34013595369 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_2.fq.gz
+yes 31316620338 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_1.fq.gz
+yes 34275308803 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_2.fq.gz
+yes 31099364277 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_1.fq.gz
+yes 34013595369 /project/uma_lisa_komoroske/Tanya/download/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_2.fq.gz
 
-cksums from 
+##### cksums from /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/
+# Undetermined
+yes 272 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/MD5.txt
+yes 8285630061 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_1.fq.gz
+yes 9136401141 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L7_2.fq.gz
+yes 8068088202 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_1.fq.gz
+yes 8907563399 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/Undetermined/Undetermined_H7HH3BBXX_L8_2.fq.gz
+
+#SV1
+yes 31316620338 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_1.fq.gz
+yes 34275308803 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L7_2.fq.gz
+yes 31099364277 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_1.fq.gz
+yes 34013595369 /project/uma_lisa_komoroske/Morelli_RAD/redsquirrel/usftp1.novogene.com/H202SC19123068/Rawdata/RAD_SV1/RAD_SV1_CKDL200148269-1B_H7HH3BBXX_L8_2.fq.gz
