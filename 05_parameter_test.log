@@ -1,0 +1,616 @@
+Logging to './05_parameter_opt/m3_M1_n1/r80/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M1_n1/r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 1 population(s), 1 group(s).
+Working on 8 samples.
+Working on 1 population(s):
+    1: JF2, JF3, RK15, RK16, RS32, RS33, UMA35, UMA37
+Working on 1 group(s) of populations:
+    defaultgrp: 1
+
+SNPs and calls will be written in VCF format to './05_parameter_opt/m3_M1_n1/r80/populations.snps.vcf'
+Haplotypes will be written in VCF format to './05_parameter_opt/m3_M1_n1/r80/populations.haps.vcf'
+Genotyping markers will be written to './05_parameter_opt/m3_M1_n1/r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M1_n1/r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M1_n1/r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M1_n1/r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M1_n1/r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+
+Removed 455964 loci that did not pass sample/population constraints from 546827 loci.
+Kept 90863 loci, composed of 69703743 sites; 346533 of those sites were filtered, 239367 variant sites remained.
+Number of loci with PE contig: 90863.00 (100.0%);
+  Mean length of loci: 757.13bp (stderr 0.32);
+Number of loci with SE/PE overlap: 90663.00 (99.8%);
+  Mean length of overlapping loci: 767.13bp (stderr 0.32); mean overlap: 31.00bp (stderr 0.01);
+Mean genotyped sites per locus: 767.11bp (stderr 0.32).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 7.44 samples per locus; pi: 0.24376; all/variant/polymorphic sites: 69701891/239367/239367; private alleles: 0
+Populations is done.
+Logging to './05_parameter_opt/m3_M1_n1/ind_het/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M1_n1/ind_het/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 8 population(s), 1 group(s).
+Working on 8 samples.
+Working on 8 population(s):
+    1: RS32
+    2: RS33
+    3: UMA35
+    4: UMA37
+    5: RK16
+    6: RK15
+    7: JF2
+    8: JF3
+Working on 1 group(s) of populations:
+    defaultgrp: 1, 2, 3, 4, 5, 6, 7, 8
+
+Genotyping markers will be written to './05_parameter_opt/m3_M1_n1/ind_het/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M1_n1/ind_het/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M1_n1/ind_het/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M1_n1/ind_het/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M1_n1/ind_het/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+Batch 11 
+Batch 12 
+Batch 13 
+Batch 14 
+Batch 15 
+Batch 16 
+Batch 17 
+Batch 18 
+Batch 19 
+Batch 20 
+Batch 21 
+Batch 22 
+Batch 23 
+Batch 24 
+Batch 25 
+Batch 26 
+Batch 27 
+Batch 28 
+Batch 29 
+Batch 30 
+Batch 31 
+Batch 32 
+Batch 33 
+Batch 34 
+Batch 35 
+Batch 36 
+Batch 37 
+Batch 38 
+Batch 39 
+Batch 40 
+Batch 41 
+Batch 42 
+Batch 43 
+Batch 44 
+Batch 45 
+Batch 46 
+Batch 47 
+Batch 48 
+Batch 49 
+Batch 50 
+Batch 51 
+Batch 52 
+Batch 53 
+Batch 54 
+Batch 55 
+
+Removed 0 loci that did not pass sample/population constraints from 546827 loci.
+Kept 546827 loci, composed of 279554055 sites; 135739 of those sites were filtered, 1178718 variant sites remained.
+Number of loci with PE contig: 544733.00 (99.6%);
+  Mean length of loci: 502.66bp (stderr 0.28);
+Number of loci with SE/PE overlap: 385570.00 (70.5%);
+  Mean length of overlapping loci: 578.92bp (stderr 0.28); mean overlap: 29.69bp (stderr 0.01);
+Mean genotyped sites per locus: 508.55bp (stderr 0.29).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 1 samples per locus; pi: 0.17529; all/variant/polymorphic sites: 111720502/506472/88778; private alleles: 49819
+  2: 1 samples per locus; pi: 0.18151; all/variant/polymorphic sites: 135143005/627411/113883; private alleles: 68408
+  3: 1 samples per locus; pi: 0.19562; all/variant/polymorphic sites: 167643855/851782/166629; private alleles: 123560
+  4: 1 samples per locus; pi: 0.19332; all/variant/polymorphic sites: 127095707/638492/123433; private alleles: 80682
+  5: 1 samples per locus; pi: 0.20576; all/variant/polymorphic sites: 169756632/860841/177125; private alleles: 131850
+  6: 1 samples per locus; pi: 0.21338; all/variant/polymorphic sites: 188794669/993380/211963; private alleles: 178965
+  7: 1 samples per locus; pi: 0.16902; all/variant/polymorphic sites: 128726208/562964/95150; private alleles: 54865
+  8: 1 samples per locus; pi: 0.16963; all/variant/polymorphic sites: 108712059/477215/80952; private alleles: 44703
+Populations is done.
+Logging to './05_parameter_opt/m3_M2_n2/r80/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M2_n2/r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 1 population(s), 1 group(s).
+Working on 8 samples.
+Working on 1 population(s):
+    1: JF2, JF3, RK15, RK16, RS32, RS33, UMA35, UMA37
+Working on 1 group(s) of populations:
+    defaultgrp: 1
+
+SNPs and calls will be written in VCF format to './05_parameter_opt/m3_M2_n2/r80/populations.snps.vcf'
+Haplotypes will be written in VCF format to './05_parameter_opt/m3_M2_n2/r80/populations.haps.vcf'
+Genotyping markers will be written to './05_parameter_opt/m3_M2_n2/r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M2_n2/r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M2_n2/r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M2_n2/r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M2_n2/r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+
+Removed 282887 loci that did not pass sample/population constraints from 378423 loci.
+Kept 95536 loci, composed of 73407795 sites; 417910 of those sites were filtered, 324018 variant sites remained.
+Number of loci with PE contig: 95536.00 (100.0%);
+  Mean length of loci: 758.38bp (stderr 0.31);
+Number of loci with SE/PE overlap: 95335.00 (99.8%);
+  Mean length of overlapping loci: 768.38bp (stderr 0.31); mean overlap: 31.01bp (stderr 0.01);
+Mean genotyped sites per locus: 768.36bp (stderr 0.31).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 7.4613 samples per locus; pi: 0.24946; all/variant/polymorphic sites: 73405993/324018/324018; private alleles: 0
+Populations is done.
+Logging to './05_parameter_opt/m3_M2_n2/ind_het/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M2_n2/ind_het/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 8 population(s), 1 group(s).
+Working on 8 samples.
+Working on 8 population(s):
+    1: RS32
+    2: RS33
+    3: UMA35
+    4: UMA37
+    5: RK16
+    6: RK15
+    7: JF2
+    8: JF3
+Working on 1 group(s) of populations:
+    defaultgrp: 1, 2, 3, 4, 5, 6, 7, 8
+
+Genotyping markers will be written to './05_parameter_opt/m3_M2_n2/ind_het/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M2_n2/ind_het/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M2_n2/ind_het/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M2_n2/ind_het/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M2_n2/ind_het/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+Batch 11 
+Batch 12 
+Batch 13 
+Batch 14 
+Batch 15 
+Batch 16 
+Batch 17 
+Batch 18 
+Batch 19 
+Batch 20 
+Batch 21 
+Batch 22 
+Batch 23 
+Batch 24 
+Batch 25 
+Batch 26 
+Batch 27 
+Batch 28 
+Batch 29 
+Batch 30 
+Batch 31 
+Batch 32 
+Batch 33 
+Batch 34 
+Batch 35 
+Batch 36 
+Batch 37 
+Batch 38 
+
+Removed 0 loci that did not pass sample/population constraints from 378423 loci.
+Kept 378423 loci, composed of 215464734 sites; 157529 of those sites were filtered, 1373846 variant sites remained.
+Number of loci with PE contig: 377485.00 (99.8%);
+  Mean length of loci: 560.44bp (stderr 0.34);
+Number of loci with SE/PE overlap: 298998.00 (79.0%);
+  Mean length of overlapping loci: 626.05bp (stderr 0.31); mean overlap: 30.15bp (stderr 0.01);
+Mean genotyped sites per locus: 567.47bp (stderr 0.34).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 1 samples per locus; pi: 0.17933; all/variant/polymorphic sites: 103054364/608732/109164; private alleles: 53855
+  2: 1 samples per locus; pi: 0.18867; all/variant/polymorphic sites: 123873847/757517/142923; private alleles: 74334
+  3: 1 samples per locus; pi: 0.21089; all/variant/polymorphic sites: 151503358/1035354/218343; private alleles: 140168
+  4: 1 samples per locus; pi: 0.20394; all/variant/polymorphic sites: 115018194/760876/155176; private alleles: 86858
+  5: 1 samples per locus; pi: 0.22575; all/variant/polymorphic sites: 153251738/1052021/237495; private alleles: 154795
+  6: 1 samples per locus; pi: 0.24012; all/variant/polymorphic sites: 165711353/1196757/287360; private alleles: 208019
+  7: 1 samples per locus; pi: 0.17591; all/variant/polymorphic sites: 119412420/680149/119647; private alleles: 61126
+  8: 1 samples per locus; pi: 0.17753; all/variant/polymorphic sites: 102345972/586763/104167; private alleles: 50896
+Populations is done.
+Logging to './05_parameter_opt/m3_M3_n3/r80/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M3_n3/r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 1 population(s), 1 group(s).
+Working on 8 samples.
+Working on 1 population(s):
+    1: JF2, JF3, RK15, RK16, RS32, RS33, UMA35, UMA37
+Working on 1 group(s) of populations:
+    defaultgrp: 1
+
+SNPs and calls will be written in VCF format to './05_parameter_opt/m3_M3_n3/r80/populations.snps.vcf'
+Haplotypes will be written in VCF format to './05_parameter_opt/m3_M3_n3/r80/populations.haps.vcf'
+Genotyping markers will be written to './05_parameter_opt/m3_M3_n3/r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M3_n3/r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M3_n3/r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M3_n3/r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M3_n3/r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+
+Removed 213505 loci that did not pass sample/population constraints from 309886 loci.
+Kept 96381 loci, composed of 74162382 sites; 454091 of those sites were filtered, 369052 variant sites remained.
+Number of loci with PE contig: 96381.00 (100.0%);
+  Mean length of loci: 759.47bp (stderr 0.31);
+Number of loci with SE/PE overlap: 96174.00 (99.8%);
+  Mean length of overlapping loci: 769.48bp (stderr 0.31); mean overlap: 31.01bp (stderr 0.01);
+Mean genotyped sites per locus: 769.45bp (stderr 0.31).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 7.4695 samples per locus; pi: 0.25329; all/variant/polymorphic sites: 74160571/369052/369052; private alleles: 0
+Populations is done.
+Logging to './05_parameter_opt/m3_M3_n3/ind_het/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M3_n3/ind_het/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 8 population(s), 1 group(s).
+Working on 8 samples.
+Working on 8 population(s):
+    1: RS32
+    2: RS33
+    3: UMA35
+    4: UMA37
+    5: RK16
+    6: RK15
+    7: JF2
+    8: JF3
+Working on 1 group(s) of populations:
+    defaultgrp: 1, 2, 3, 4, 5, 6, 7, 8
+
+Genotyping markers will be written to './05_parameter_opt/m3_M3_n3/ind_het/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M3_n3/ind_het/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M3_n3/ind_het/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M3_n3/ind_het/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M3_n3/ind_het/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+Batch 11 
+Batch 12 
+Batch 13 
+Batch 14 
+Batch 15 
+Batch 16 
+Batch 17 
+Batch 18 
+Batch 19 
+Batch 20 
+Batch 21 
+Batch 22 
+Batch 23 
+Batch 24 
+Batch 25 
+Batch 26 
+Batch 27 
+Batch 28 
+Batch 29 
+Batch 30 
+Batch 31 
+
+Removed 0 loci that did not pass sample/population constraints from 309886 loci.
+Kept 309886 loci, composed of 187053654 sites; 166263 of those sites were filtered, 1443617 variant sites remained.
+Number of loci with PE contig: 309297.00 (99.8%);
+  Mean length of loci: 594.50bp (stderr 0.36);
+Number of loci with SE/PE overlap: 259555.00 (83.8%);
+  Mean length of overlapping loci: 650.67bp (stderr 0.33); mean overlap: 30.39bp (stderr 0.01);
+Mean genotyped sites per locus: 602.15bp (stderr 0.37).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 1 samples per locus; pi: 0.18293; all/variant/polymorphic sites: 97242399/650509/118998; private alleles: 54390
+  2: 1 samples per locus; pi: 0.19248; all/variant/polymorphic sites: 116881244/811547/156206; private alleles: 74751
+  3: 1 samples per locus; pi: 0.21827; all/variant/polymorphic sites: 142118851/1112746/242879; private alleles: 143784
+  4: 1 samples per locus; pi: 0.21021; all/variant/polymorphic sites: 107967998/812936/170890; private alleles: 86919
+  5: 1 samples per locus; pi: 0.23762; all/variant/polymorphic sites: 143557471/1133624/269370; private alleles: 162268
+  6: 1 samples per locus; pi: 0.25469; all/variant/polymorphic sites: 153312024/1283457/326884; private alleles: 218325
+  7: 1 samples per locus; pi: 0.18173; all/variant/polymorphic sites: 113076150/733423/133284; private alleles: 62751
+  8: 1 samples per locus; pi: 0.18146; all/variant/polymorphic sites: 97788670/634106/115068; private alleles: 52506
+Populations is done.
+Logging to './05_parameter_opt/m3_M4_n4/r80/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M4_n4/r80/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0.8
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 1 population(s), 1 group(s).
+Working on 8 samples.
+Working on 1 population(s):
+    1: JF2, JF3, RK15, RK16, RS32, RS33, UMA35, UMA37
+Working on 1 group(s) of populations:
+    defaultgrp: 1
+
+SNPs and calls will be written in VCF format to './05_parameter_opt/m3_M4_n4/r80/populations.snps.vcf'
+Haplotypes will be written in VCF format to './05_parameter_opt/m3_M4_n4/r80/populations.haps.vcf'
+Genotyping markers will be written to './05_parameter_opt/m3_M4_n4/r80/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M4_n4/r80/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M4_n4/r80/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M4_n4/r80/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M4_n4/r80/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+
+Removed 179721 loci that did not pass sample/population constraints from 275709 loci.
+Kept 95988 loci, composed of 73972982 sites; 473635 of those sites were filtered, 391401 variant sites remained.
+Number of loci with PE contig: 95988.00 (100.0%);
+  Mean length of loci: 760.65bp (stderr 0.31);
+Number of loci with SE/PE overlap: 95782.00 (99.8%);
+  Mean length of overlapping loci: 770.64bp (stderr 0.31); mean overlap: 31.01bp (stderr 0.01);
+Mean genotyped sites per locus: 770.63bp (stderr 0.31).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 7.4717 samples per locus; pi: 0.25578; all/variant/polymorphic sites: 73971153/391401/391401; private alleles: 0
+Populations is done.
+Logging to './05_parameter_opt/m3_M4_n4/ind_het/populations.log'.
+Locus/sample distributions will be written to './05_parameter_opt/m3_M4_n4/ind_het/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 0.7
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  Fstats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 8 samples, 8 population(s), 1 group(s).
+Working on 8 samples.
+Working on 8 population(s):
+    1: RS32
+    2: RS33
+    3: UMA35
+    4: UMA37
+    5: RK16
+    6: RK15
+    7: JF2
+    8: JF3
+Working on 1 group(s) of populations:
+    defaultgrp: 1, 2, 3, 4, 5, 6, 7, 8
+
+Genotyping markers will be written to './05_parameter_opt/m3_M4_n4/ind_het/populations.markers.tsv'
+Raw Genotypes/Haplotypes will be written to './05_parameter_opt/m3_M4_n4/ind_het/populations.haplotypes.tsv'
+Population-level summary statistics will be written to './05_parameter_opt/m3_M4_n4/ind_het/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to './05_parameter_opt/m3_M4_n4/ind_het/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in './05_parameter_opt/m3_M4_n4/ind_het/populations.log.distribs'.
+Now processing...
+Batch 1 
+Batch 2 
+Batch 3 
+Batch 4 
+Batch 5 
+Batch 6 
+Batch 7 
+Batch 8 
+Batch 9 
+Batch 10 
+Batch 11 
+Batch 12 
+Batch 13 
+Batch 14 
+Batch 15 
+Batch 16 
+Batch 17 
+Batch 18 
+Batch 19 
+Batch 20 
+Batch 21 
+Batch 22 
+Batch 23 
+Batch 24 
+Batch 25 
+Batch 26 
+Batch 27 
+Batch 28 
+
+Removed 0 loci that did not pass sample/population constraints from 275709 loci.
+Kept 275709 loci, composed of 171865937 sites; 170336 of those sites were filtered, 1465883 variant sites remained.
+Number of loci with PE contig: 275274.00 (99.8%);
+  Mean length of loci: 614.12bp (stderr 0.38);
+Number of loci with SE/PE overlap: 237966.00 (86.3%);
+  Mean length of overlapping loci: 664.46bp (stderr 0.34); mean overlap: 30.49bp (stderr 0.01);
+Mean genotyped sites per locus: 622.12bp (stderr 0.38).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  1: 1 samples per locus; pi: 0.18381; all/variant/polymorphic sites: 93315253/667923/122774; private alleles: 53802
+  2: 1 samples per locus; pi: 0.19591; all/variant/polymorphic sites: 112094203/832754/163143; private alleles: 73367
+  3: 1 samples per locus; pi: 0.22174; all/variant/polymorphic sites: 136310459/1146164/254150; private alleles: 143754
+  4: 1 samples per locus; pi: 0.214; all/variant/polymorphic sites: 103395003/832754/178212; private alleles: 85696
+  5: 1 samples per locus; pi: 0.24327; all/variant/polymorphic sites: 137474363/1168845/284343; private alleles: 164148
+  6: 1 samples per locus; pi: 0.26384; all/variant/polymorphic sites: 145766568/1317307/347557; private alleles: 222187
+  7: 1 samples per locus; pi: 0.18515; all/variant/polymorphic sites: 108550179/753602/139530; private alleles: 62698
+  8: 1 samples per locus; pi: 0.18428; all/variant/polymorphic sites: 94556574/654441/120598; private alleles: 52813
+Populations is done.

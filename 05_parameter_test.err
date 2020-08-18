@@ -1,0 +1,167 @@
+stacks 2.3d is located under /share/pkg/stacks/2.3d
+Parsed population map: 8 files in 1 population and 1 group.
+Found 8 sample file(s).
+
+Indentifying unique stacks...
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS32.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 1 -m 3 --name RS32 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS33.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 2 -m 3 --name RS33 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA35.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 3 -m 3 --name UMA35 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA37.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 4 -m 3 --name UMA37 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK16.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 5 -m 3 --name RK16 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK15.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 6 -m 3 --name RK15 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF2.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 7 -m 3 --name JF2 -p 15 -M 1
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF3.1.fq.gz -o ./05_parameter_opt/m3_M1_n1 -i 8 -m 3 --name JF3 -p 15 -M 1
+
+Depths of Coverage for Processed Samples:
+RS32: 7.81x
+RS33: 8.51x
+UMA35: 12.07x
+UMA37: 11.15x
+RK16: 13.62x
+RK15: 23.11x
+JF2: 7.47x
+JF3: 7.19x
+
+Generating catalog...
+  /share/pkg/stacks/2.3d/bin/cstacks -P ./05_parameter_opt/m3_M1_n1 -p 15 -n 1 -M ./popmap.txt
+
+Matching samples to the catalog...
+  /share/pkg/stacks/2.3d/bin/sstacks -P ./05_parameter_opt/m3_M1_n1 -p 15 -M ./popmap.txt
+
+Sorting reads by RAD locus...
+  /share/pkg/stacks/2.3d/bin/tsv2bam -P ./05_parameter_opt/m3_M1_n1  -t 15 -M ./popmap.txt -R ./05_parameter_opt/clone_filter_test/
+
+Calling variants, genotypes and haplotypes...
+  /share/pkg/stacks/2.3d/bin/gstacks -P ./05_parameter_opt/m3_M1_n1 -t 15 -M ./popmap.txt
+
+Calculating population-level summary statistics
+  /share/pkg/stacks/2.3d/bin/populations -P ./05_parameter_opt/m3_M1_n1 -t 15 -M ./popmap.txt  --vcf  --max-obs-het 0.7
+
+denovo_map.pl is done.
+Parsed population map: 8 files in 1 population and 1 group.
+Found 8 sample file(s).
+
+Indentifying unique stacks...
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS32.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 1 -m 3 --name RS32 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS33.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 2 -m 3 --name RS33 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA35.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 3 -m 3 --name UMA35 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA37.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 4 -m 3 --name UMA37 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK16.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 5 -m 3 --name RK16 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK15.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 6 -m 3 --name RK15 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF2.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 7 -m 3 --name JF2 -p 15 -M 2
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF3.1.fq.gz -o ./05_parameter_opt/m3_M2_n2 -i 8 -m 3 --name JF3 -p 15 -M 2
+
+Depths of Coverage for Processed Samples:
+RS32: 8.34x
+RS33: 9.09x
+UMA35: 13.17x
+UMA37: 12.01x
+RK16: 15.03x
+RK15: 25.48x
+JF2: 7.94x
+JF3: 7.69x
+
+Generating catalog...
+  /share/pkg/stacks/2.3d/bin/cstacks -P ./05_parameter_opt/m3_M2_n2 -p 15 -n 2 -M ./popmap.txt
+
+Matching samples to the catalog...
+  /share/pkg/stacks/2.3d/bin/sstacks -P ./05_parameter_opt/m3_M2_n2 -p 15 -M ./popmap.txt
+
+Sorting reads by RAD locus...
+  /share/pkg/stacks/2.3d/bin/tsv2bam -P ./05_parameter_opt/m3_M2_n2  -t 15 -M ./popmap.txt -R ./05_parameter_opt/clone_filter_test/
+
+Calling variants, genotypes and haplotypes...
+  /share/pkg/stacks/2.3d/bin/gstacks -P ./05_parameter_opt/m3_M2_n2 -t 15 -M ./popmap.txt
+
+Calculating population-level summary statistics
+  /share/pkg/stacks/2.3d/bin/populations -P ./05_parameter_opt/m3_M2_n2 -t 15 -M ./popmap.txt  --vcf  --max-obs-het 0.7
+
+denovo_map.pl is done.
+Parsed population map: 8 files in 1 population and 1 group.
+Found 8 sample file(s).
+
+Indentifying unique stacks...
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS32.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 1 -m 3 --name RS32 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS33.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 2 -m 3 --name RS33 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA35.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 3 -m 3 --name UMA35 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA37.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 4 -m 3 --name UMA37 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK16.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 5 -m 3 --name RK16 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK15.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 6 -m 3 --name RK15 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF2.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 7 -m 3 --name JF2 -p 15 -M 3
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF3.1.fq.gz -o ./05_parameter_opt/m3_M3_n3 -i 8 -m 3 --name JF3 -p 15 -M 3
+
+Depths of Coverage for Processed Samples:
+RS32: 8.68x
+RS33: 9.47x
+UMA35: 13.90x
+UMA37: 12.55x
+RK16: 15.98x
+RK15: 27.10x
+JF2: 8.20x
+JF3: 7.98x
+
+Generating catalog...
+  /share/pkg/stacks/2.3d/bin/cstacks -P ./05_parameter_opt/m3_M3_n3 -p 15 -n 3 -M ./popmap.txt
+
+Matching samples to the catalog...
+  /share/pkg/stacks/2.3d/bin/sstacks -P ./05_parameter_opt/m3_M3_n3 -p 15 -M ./popmap.txt
+
+Sorting reads by RAD locus...
+  /share/pkg/stacks/2.3d/bin/tsv2bam -P ./05_parameter_opt/m3_M3_n3  -t 15 -M ./popmap.txt -R ./05_parameter_opt/clone_filter_test/
+
+Calling variants, genotypes and haplotypes...
+  /share/pkg/stacks/2.3d/bin/gstacks -P ./05_parameter_opt/m3_M3_n3 -t 15 -M ./popmap.txt
+
+Calculating population-level summary statistics
+  /share/pkg/stacks/2.3d/bin/populations -P ./05_parameter_opt/m3_M3_n3 -t 15 -M ./popmap.txt  --vcf  --max-obs-het 0.7
+
+denovo_map.pl is done.
+Parsed population map: 8 files in 1 population and 1 group.
+Found 8 sample file(s).
+
+Indentifying unique stacks...
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS32.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 1 -m 3 --name RS32 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS33.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 2 -m 3 --name RS33 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA35.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 3 -m 3 --name UMA35 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA37.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 4 -m 3 --name UMA37 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK16.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 5 -m 3 --name RK16 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK15.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 6 -m 3 --name RK15 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF2.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 7 -m 3 --name JF2 -p 15 -M 4
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/JF3.1.fq.gz -o ./05_parameter_opt/m3_M4_n4 -i 8 -m 3 --name JF3 -p 15 -M 4
+
+Depths of Coverage for Processed Samples:
+RS32: 8.88x
+RS33: 9.71x
+UMA35: 14.38x
+UMA37: 12.91x
+RK16: 16.61x
+RK15: 28.15x
+JF2: 8.39x
+JF3: 8.19x
+
+Generating catalog...
+  /share/pkg/stacks/2.3d/bin/cstacks -P ./05_parameter_opt/m3_M4_n4 -p 15 -n 4 -M ./popmap.txt
+
+Matching samples to the catalog...
+  /share/pkg/stacks/2.3d/bin/sstacks -P ./05_parameter_opt/m3_M4_n4 -p 15 -M ./popmap.txt
+
+Sorting reads by RAD locus...
+  /share/pkg/stacks/2.3d/bin/tsv2bam -P ./05_parameter_opt/m3_M4_n4  -t 15 -M ./popmap.txt -R ./05_parameter_opt/clone_filter_test/
+
+Calling variants, genotypes and haplotypes...
+  /share/pkg/stacks/2.3d/bin/gstacks -P ./05_parameter_opt/m3_M4_n4 -t 15 -M ./popmap.txt
+
+Calculating population-level summary statistics
+  /share/pkg/stacks/2.3d/bin/populations -P ./05_parameter_opt/m3_M4_n4 -t 15 -M ./popmap.txt  --vcf  --max-obs-het 0.7
+
+denovo_map.pl is done.
+Parsed population map: 8 files in 1 population and 1 group.
+Found 8 sample file(s).
+
+Indentifying unique stacks...
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS32.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 1 -m 3 --name RS32 -p 15 -M 5
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RS33.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 2 -m 3 --name RS33 -p 15 -M 5
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA35.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 3 -m 3 --name UMA35 -p 15 -M 5
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/UMA37.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 4 -m 3 --name UMA37 -p 15 -M 5
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK16.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 5 -m 3 --name RK16 -p 15 -M 5
+  /share/pkg/stacks/2.3d/bin/ustacks -t gzfastq -f ./05_parameter_opt/clone_filter_test/RK15.1.fq.gz -o ./05_parameter_opt/m3_M5_n5 -i 6 -m 3 --name RK15 -p 15 -M 5
