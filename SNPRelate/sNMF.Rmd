@@ -1,7 +1,7 @@
 ---
 title: "sNMF analysis on red squirrel SNP data"
 author: "Tanya Lama"
-date: "4/13/2018"
+date: "08/13/2020"
 output:
   html_document: 
     theme: cosmo
@@ -23,7 +23,7 @@ require(LEA)
 
 ```{r echo = T, include = T}
 
-vcf<- read.vcfR("/Users/tanyalama/TMorelli_UMassachusetts_RedSquirrel_20170525-01609/VCF_files/UMA13_aligned_genotypes_stringent.vcf", verbose = FALSE)
+vcf<- read.vcfR("/project/uma_lisa_komoroske/Morelli_RAD/snps.vcf", verbose = FALSE)
 head(vcf)
 
 #Then plot important statistics summed over entire VCF
