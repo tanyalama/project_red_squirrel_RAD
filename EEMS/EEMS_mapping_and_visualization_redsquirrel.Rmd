@@ -1,0 +1,248 @@
+---
+title: "project_redsquirrel_RAD_EEMS"
+output: html_document
+---
+**Disclaimer** Hi! In an effort to do reproducible, accessible research, ALL of my scripts are open source. If you use this script in development of a peer-reviewed publication, please include me in your acknowledgements. Contact me at tanya.m.lama@gmail.com to discuss co-authorship, ask questions, or say thanks. **END**
+
+#Estimated Effective Migration Surface
+insert EEMS description from HackMD
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+setwd("/Users/tanyalama/Box/project_redsquirrel")
+library(maps)
+library(mapproj)
+library(mapdata)
+library(rgeos)
+library(maptools)
+library(sp)
+library(raster)
+library(rgdal)
+```
+# Plotting locations
+We'll start by plotting our redsquirrel sample locations and mapping out the outline of the geographic features that interest us. Our study area is entirely in the WMNF of New Hampshire, so that should be easy to map out.
+
+Note: I could totally get climate data for this, if that's relevant but I'm not sure how this analysis plays into the rest of the paper.
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
+## Mapping red squirrel sample locations ##
+us0 <- getData('GADM', country="USA", level=0)
+us1 <- getData('GADM', country="USA", level=1)
+us2 <- getData('GADM', country="USA", level=2)
+us3 <- getData('GADM', country="USA", level=3)
+```
+# Try this script 
+#To plot multiple SpatialPolygons objects on the same device, one approach is to specify the geographic extent you wish to plot first, and then using plot(..., add=TRUE). This will add to the map only those points that are of interest.
+
+Plotting using a projection, (e.g. a polyconic projection) requires first using the spTransform() function in the rgdal package to make sure all the layers are in the same projection.
+```{r}
+##Call a new plot
+plot.new()
+## Specify a geographic extent for the map
+## by defining the top-left and bottom-right geographic coordinates
+mapExtent <- rbind(c(-74, 59), c(-60, 40)) #final set: (c(-74, 59), c(-61, 40))
+#plot(mapExtent, col=NA, pch="o", add=TRUE)#trouble-shooting how bit to makethe extent
+
+## Specify the required projection using a proj4 string
+## Use http://www.spatialreference.org/ to find the required string
+## Polyconic for North America
+newProj <- CRS("+proj=poly +lat_0=0 +lon_0=-100 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") #this should be same/similar to "+init=epsg:4326" which is what we have for the points above
+
+## Project the map extent (first need to specify that it is longlat) 
+mapExtentPr <- spTransform(SpatialPoints(mapExtent, 
+                  proj4string=CRS("+proj=longlat")),
+                  newProj)
+plot(mapExtentPr, pch=NA) #try this to make St Lawrence River
+#plot(mapExtentPr,pch="o", add=TRUE) #visualize using points the topleft and bottomright corners of the extent
+
+## Project other layers
+us1Pr <- spTransform(us1, newProj) 
+us2Pr <- spTransform(us2, newProj) 
+us3Pr <- spTransform(us3, newProj) 
+
+## Plot each projected layer, beginning with the projected extent
+#plot(us1Pr, border="black", col=NA, add=TRUE)
+```
+#Adding other features to the map, such as highlighting jurisdictions of interest, can easily be done using the same approach:
+```{r}
+## Highlight provinces and states of interest
+theseUSJurisdictions <- c("New Hampshire", "Vermont", "Maine")
+newhampshire <- c("New Hampshire")
+p <- plot(us1Pr[us1Pr$NAME_1 %in% theseUSJurisdictions, ], border="black", 
+    col="gray90", add=TRUE) +
+  plot(us2Pr[us2Pr$NAME_1 %in% borderingJurisdictions, ], border="black", cex=0.4, 
+    col="white", add=TRUE) +
+  plot(us3Pr[us3Pr$NAME_1 %in% newhampshire, ], border="black", cex=0.4, 
+    col="white", add=TRUE)
+```
+# Add a map "inlay" of the continent or region-- this is still a work in progress
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+mapExtent2 <- rbind(c(-156, 80), c(-68, 19))#final set: (c(-74, 59), c(-61, 40)) mapExtent <- rbind(c(-156, 80), c(-68, 19))
+#plot(mapExtent2, col=NA, pch="o", add=TRUE)#trouble-shooting how bit to makethe extent
+## Project the map extent (first need to specify that it is longlat) 
+mapExtent2Pr <- spTransform(SpatialPoints(mapExtent, 
+                  proj4string=CRS("+proj=longlat")),
+                  newProj)
+plot(mapExtent2Pr, pch=NA, col="blue")
+plot(us0Pr, border="black", col=NA, add=TRUE)
+```
+
+# Next: spatial requirements for EEMS
+We need to do some complementary mapping for our EEMS (estimated effective migration surface) analysis
+There are two spatial requirements -- a .coords file that includes sample locations in WGS84 (long,lat) and a .outer file. The .outer file should include coordinates that outline available habitat for the populations included in .coords. This is easier said than done because the list of coordinates need to be listed in counter clockwise order. See the EEMS HackMD for a few different ways of generating the .outer coordinates for your study area (in R or ArcGIS). We used the ArcGIS method.
+
+#Drawing the ".outer" coordinates in ArcGIS 
+We decided that it would be best to just try tracing the outline of our study area in Arc and using those coordinates at the input for .outer in EEMS. Ultimately we tried two iterations. One which very precisely followed the outline of our study area, and one which was more of a general shape. EEMS wasn't able to properly draw demes given when input habitat was disconnected. On a second iteration, we re-drew the outline with less detail and EEMS was able to use our habitat designation to proceed. 
+Here is a visualization of the "detailed" outline we drew. Let's make sure that the coordinates are in the right projection (WGS84) and that when we transform them, they line up nicely with our other data layers (sample locations and geographic borders for NH and Maine).
+
+# Add sample location points to the map, from our dataset
+```{r}
+squirrel<-read.csv("/Users/tanyalama/Box/project_redsquirrel/name.csv",header=TRUE)
+spdf<-data.frame(samples=squirrel$id,y=squirrel$latitude,x=squirrel$longitude, class=squirrel$pop) #we might not include population information if we don't have population structuring in this dataset. EEMS works best if there's pretty clear population differentiation. 
+coordinates(spdf)<-c("x","y") #retrieve the spatial coordinates from the lynx dataset
+spdfpr<- spTransform(spdf, newProj)
+proj4string(spdf)<-CRS("+init=epsg:4326") #sets projection attributes on spatial data #Here we have WGS84
+#EPSG:3347	NAD83 / Statistics Canada Lambert	Lambert Conic Conformal (2SP)
+pts<-spTransform(spdf, CRS("+proj=poly +lat_0=0 +lon_0=-100 +x_0=0 
+            +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")) #transform to WGS 84
+palette(c("orange", "violet", "lightgreen", "tomato", "blueviolet")) #matches our admixture plot
+plot(pts,pch=16, col=as.factor(spdftrans$class), add=TRUE) #palette=(rainbow(5))
+```
+# Add a legend
+```{r}
+legend("bottomright", legend=c("pop1", "pop2", "pop3"), pch=16, col=c("orange", "violet", "lightgreen", "tomato", "blueviolet"), text.col="black", cex = 0.6, border=FALSE, box.col=NA, inset=0.1)
+```
+That looks great. We have all of the spatial components (sample locations as .coords, available habitat as .outer, and geographic features for mapping)
+# Map .outer coordinates
+```{r}
+outer<- read.csv("/Users/tanyalama/Box/project_redsquirrel/name.csv")
+spdf<-data.frame(y=outer$lat,x=outer$long)
+coordinates(spdf)<-c("x","y") #retrieve the spatial coordinates from the lynx dataset
+spdfpr<- spTransform(spdf, newProj)
+proj4string(spdf)<-CRS("+init=epsg:4326") #sets projection attributes on spatial data #Here we have WGS84
+#EPSG:3347	NAD83 / Statistics Canada Lambert	Lambert Conic Conformal (2SP)
+EEMSpts.outer<-spTransform(spdf, CRS("+proj=poly +lat_0=0 +lon_0=-100 +x_0=0 
+            +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")) #transform to WGS 84
+plot(EEMSpts.outer,pch=10,col="black", add = TRUE) #palette=(rainbow(5))
+```
+
+# Run EEMS on the cluster
+See the HackMD for these details. EEMS requires input .coords and .outer files and the genotype data in .diffs format. See my HackMD for directions on converting .vcf to .diffs using the bed2diffs function. 
+# Download the *chain1 *chain2 *chain3 folders to the EEMS directory on your local machine
+
+#EEMS Visualizations
+The EEMS results (in the chain* folders) can be visualized with the function eems.plots defined in the R package rEEMSplot. The package is not on CRAN, so install it from source instead. (rEEMSplot code is in the directory "plotting".)
+## Part 1: Install rEEMSplots
+```{r}
+#We used the following commands to install rEEMSplots
+#Make sure you setwd to the folder (plotting) that includes rEEMSplots before you attempt to install. 
+setwd("/Users/tanyalama/Box/project_canada_lynx_wgs/R_canada_lynx_wgs/EEMS/eems-master/plotting") 
+
+#This is IMPORTANT
+#install.packages("rEEMSplots2",repos=NULL,type="source")
+library(rEEMSplots)
+
+#rEEMSplots requires a few other packages in order to work. If these are not already installed, an error message would appear.
+library(Rcpp)
+library(raster)
+library(rgeos)
+library(sp)
+#install.packages("RcppEigen") #just missing this one
+library(RcppEigen) #all set
+#install.packages(c("Rcpp", "RcppEigen", "raster", "rgeos", "sp"))
+#install.packages("rworldmap") #done
+library("rworldmap")
+#install.packages("rworldxtra") done
+library(rworldxtra)
+install.packages(GhostScript) #what is this?
+```
+## Part 2: Generate graphics
+```{r}
+#on the cluster
+mcmcpath = "/project/uma_lisa_komoroske/Tanya/scripts/EEMS/data" #why is this the mcmcpath if we're on the local machine?
+plotpath = "/Users/tanyalama/Box/project_canada_lynx_wgs/R_canada_lynx_wgs/EEMS/eems-master/runeems_snps/plots_6SV_unfiltered_SNPs-EEMS-nDemes200-chain/plots_trial"
+
+#plot all at once
+eems.plots(mcmcpath, plotpath, longlat = TRUE)
+
+eems.output = list.dirs("/Users/tanyalama/Box/project_canada_lynx_wgs/R_canada_lynx_wgs/EEMS/eems-master/runeems_snps/data",recursive = FALSE) ##output of different deme sizes
+
+projection_none <- "+proj=longlat +datum=WGS84"
+projection_mercator <- "+proj=merc +datum=WGS84"
+
+##plot migration surface for each deme size separately
+for (run in c(1:length(eems.output))) {
+  eems.plots(mcmcpath = eems.output[run],
+             plotpath = plotpath[run],
+             plot.width=8,
+             plot.height=6,
+             longlat = T,
+             add.grid = F,
+             add.demes = T,
+             projection.in = projection_none,
+             projection.out = projection_mercator,
+             out.png=FALSE,
+             min.cex.demes = 0.6,
+             max.cex.demes = 1,
+             col.demes = "red",
+             pch.demes = "o",
+             add.r.squared=F,
+             add.abline = T,
+             remove.singletons = F,
+             add.map = T,
+             col.map="black",
+             lwd.map=0.2,
+             add.title = F)
+}
+
+for (run in c(1:length(eems.output))) {
+  
+  eems.plots(
+            mcmcpath = "/Users/tanyalama/Box/project_canada_lynx_wgs/R_canada_lynx_wgs/EEMS/eems-master/runeems_snps/data/6SV_unfiltered_SNPs-EEMS-nDemes200-chain1",
+             plotpath = plotpath,
+             plot.width=8,
+             plot.height=5,
+             longlat = T,
+             add.grid = F,
+             add.demes = F,
+             projection.in = projection_none,
+             projection.out = projection_mercator,
+             out.png=FALSE,
+             m.plot.xy = {text(spdf, col="black", pch="o")},
+             q.plot.xy = {text(spdf, col="blue", pch="o")},
+             min.cex.demes = 0.6,
+             max.cex.demes = 1,
+             col.demes = "#525252",
+             pch.demes = NA,
+             add.r.squared=F,
+             add.abline = T,
+             remove.singletons = F,
+             add.map = T,
+             col.map="black",
+             lwd.map=0.2,
+             add.title = F)
+
+plots<-eems.plots(mcmcpath = "/Users/tanyalama/Box/project_canada_lynx_wgs/R_canada_lynx_wgs/EEMS/eems-master/runeems_snps/data/6SV_unfiltered_SNPs-EEMS-nDemes200-chain1", plotpath = plotpath, longlat = TRUE, 
+out.png = FALSE, add.grid = F, add.demes = F)
+
+extdata_path <- system.file("extdata", package = "rEEMSplots")
+eems_results <- file.path(extdata_path, "EEMS-example")
+name_figures <- file.path(path.expand("~"), "EEMS-example")
+
+datapath <- file.path(extdata_path, "EEMS-example")
+coord__long_lat <- read.table(paste0(datapath, ".coord"))
+
+# Add the original sampling locations on top of the contour plot.
+eems.plots(mcmcpath = eems_results,
+           plotpath = paste0(name_figures, "-sampling-locations"),
+           longlat = TRUE,
+           m.plot.xy = { points(coord__long_lat, col = "purple", pch=18) },
+           q.plot.xy = { points(coord__long_lat, col = "purple", pch=18) })
+
+# Try adding a legend. This is still a work in progress
+myfilled.legend(levels = mrates.raster$eems.levels, col = mrates.raster$eems.colors, 
+            key.axes = axis(4, tick = FALSE, hadj = 1, line = 4, 
+                cex.axis = 2), key.title = mtext(expression(paste(log, 
+                "(", italic(m), ")", sep = "")), side = 3, cex = 2.5, 
+                line = 1.5, font = 1))
+
+  
+  
